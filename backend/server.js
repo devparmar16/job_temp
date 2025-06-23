@@ -27,7 +27,7 @@ const io = new Server(server, {
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL.split(","),
+    origin: [process.env.FRONTEND_URL],
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
