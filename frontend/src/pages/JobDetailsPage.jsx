@@ -29,7 +29,7 @@ const JobDetailsPage = () => {
     const fetchJobDetails = async () => {
       setLoading(true);
       try {
-        const { data } = await axios.get(`http://localhost:4000/api/v1/job/${id}`, { withCredentials: true });
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/job/${id}`, { withCredentials: true });
         setJob(data.job);
         if(user){
             setApplicationData(prev => ({ ...prev, name: user.name, email: user.email }));

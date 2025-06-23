@@ -16,7 +16,7 @@ const AIChatBot = () => {
     setIsLoading(true);
 
     try {
-      const { data } = await axios.post('http://localhost:4000/api/v1/aichat/chat', { message: input });
+      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/aichat/chat`, { message: input });
       const botMessage = { from: 'bot', text: data.reply };
       setMessages(prev => [...prev, botMessage]);
     } catch (error) {

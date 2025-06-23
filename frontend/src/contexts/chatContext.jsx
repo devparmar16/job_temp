@@ -10,7 +10,7 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      const socketUrl = import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL : 'http://localhost:4000';
+      const socketUrl = import.meta.env.VITE_API_URL;
       const newSocket = io(socketUrl, { withCredentials: true });
       setSocket(newSocket);
 

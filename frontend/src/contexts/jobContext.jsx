@@ -9,7 +9,7 @@ export const JobProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const { isAuthenticated } = useAuth();
   
-  const API_URL = import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL}/api/v1/job` : 'http://localhost:4000/api/v1/job';
+  const API_URL = `${import.meta.env.VITE_API_URL}/api/v1/job`;
 
   const fetchJobs = async () => {
     setLoading(true);

@@ -18,7 +18,7 @@ const ChatPage = () => {
         try {
             // I need an endpoint to get single application details
             // I will add this to the backend
-            const { data } = await axios.get(`http://localhost:4000/api/v1/application/${applicationId}`, { withCredentials: true });
+            const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/application/${applicationId}`, { withCredentials: true });
             setApplication(data.application);
         } catch(error){
             console.error("failed to fetch application details", error)
@@ -28,7 +28,7 @@ const ChatPage = () => {
 
     const fetchMessages = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:4000/api/v1/chat/${applicationId}`, { withCredentials: true });
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/chat/${applicationId}`, { withCredentials: true });
         setMessages(data.messages);
       } catch (error) {
         console.error("Failed to fetch messages", error);

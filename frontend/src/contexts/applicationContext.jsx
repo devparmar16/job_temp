@@ -8,7 +8,7 @@ const ApplicationContext = createContext();
 export const ApplicationProvider = ({ children }) => {
   const [myApplications, setMyApplications] = useState([]);
   const { isAuthenticated, user } = useAuth();
-  const API_URL = import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL}/api/v1/application` : 'http://localhost:4000/api/v1/application';
+  const API_URL = `${import.meta.env.VITE_API_URL}/api/v1/application`;
 
   const applyForJob = async (formData) => {
     try {
