@@ -19,7 +19,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://job-temp-h9xb-a29v9tedk-dev-parmars-projects.vercel.app",
+    origin: process.env.FRONTEND_URL,
     methods: ["GET", "POST"],
     credentials: true,
   },
@@ -27,7 +27,7 @@ const io = new Server(server, {
 
 app.use(
   cors({
-    origin: ["https://job-temp-h9xb-a29v9tedk-dev-parmars-projects.vercel.app"],
+    origin: [process.env.FRONTEND_URL],
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
