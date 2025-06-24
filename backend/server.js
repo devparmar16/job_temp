@@ -14,31 +14,33 @@ import { ChatMessage } from "./models/chatMessageSchema.js";
 import dotenv from "dotenv";
 dotenv.config();
 
-
 const app = express();
 const server = http.createServer(app);
+
+// CORS configuration
+const corsOptions = {
+  origin: "https://job-temp-groovyb73-dev-parmars-projects.vercel.app",
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+// Apply CORS first
+app.use(cors(corsOptions));
+
+// Socket.io setup with same CORS options
 const io = new Server(server, {
-  cors: {
-    origin: "https://job-temp-groovyb73-dev-parmars-projects.vercel.app",
-    methods: ["GET", "POST"],
-    credentials: true,
-  },
+  cors: corsOptions
 });
 
-app.use(
-  cors({
-    origin: ["https://job-temp-groovyb73-dev-parmars-projects.vercel.app"],
-    methods: ["GET", "POST", "DELETE", "PUT"],
-    credentials: true,
-  })
-);
-
+// Cookie parser and other middleware
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 dbConnection();
 
+// Routes
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/job", jobRouter);
 app.use("/api/v1/application", applicationRouter);
